@@ -38,6 +38,8 @@
             padding: 30px 20px 60px;
         }
 
+        /* LOGO */
+
         .logo {
             text-align: center;
             margin-bottom: 25px;
@@ -50,6 +52,8 @@
             display: block;
             margin: 0 auto;
         }
+
+        /* CABEÇALHO */
 
         .topo {
             text-align: center;
@@ -92,6 +96,8 @@
             margin: auto;
         }
 
+        /* DATA */
+
         .data {
             text-align: center;
             margin: 45px 0 30px;
@@ -110,6 +116,8 @@
             text-transform: uppercase;
             margin-top: 8px;
         }
+
+        /* EVENTOS */
 
         .eventos {
             display: grid;
@@ -156,6 +164,8 @@
             font-weight: 600;
         }
 
+        /* FRASE */
+
         .frase {
             text-align: center;
             font-family: "Cormorant Garamond", serif;
@@ -166,12 +176,16 @@
             line-height: 1.5;
         }
 
+        /* FORMULÁRIO */
+
         .card-formulario {
             background: rgba(255,255,255,0.92);
             border: 1px solid #dcdcdc;
             border-radius: 28px;
             padding: 38px 30px;
-            box-shadow: 0 18px 60px rgba(0,0,0,0.08);
+
+            box-shadow:
+                0 18px 60px rgba(0,0,0,0.08);
         }
 
         .titulo-formulario {
@@ -196,6 +210,8 @@
             letter-spacing: 1px;
         }
 
+        /* PRAZO */
+
         .prazo-confirmacao {
             text-align: center;
             margin-bottom: 30px;
@@ -213,18 +229,20 @@
                 );
         }
 
-        .prazo-confirmacao .prazo-mini {
+        .prazo-mini {
             font-size: 10px;
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 6px;
         }
 
-        .prazo-confirmacao .prazo-data {
+        .prazo-data {
             font-family: "Cormorant Garamond", serif;
             font-size: 24px;
             font-weight: 600;
         }
+
+        /* CAMPOS */
 
         .grupo {
             margin-bottom: 25px;
@@ -265,6 +283,8 @@
             box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
         }
 
+        /* SIM / NÃO */
+
         .opcoes {
             display: flex;
             gap: 12px;
@@ -300,12 +320,16 @@
             border-color: #111;
         }
 
+        /* ACOMPANHANTES */
+
         #bloco-acompanhantes {
             display: none;
             margin-top: 25px;
             padding-top: 25px;
             border-top: 1px solid #e5e5e5;
         }
+
+        /* BOTÃO */
 
         button {
             width: 100%;
@@ -333,6 +357,8 @@
             cursor: default;
             transform: none;
         }
+
+        /* CONFIRMAÇÃO */
 
         #mensagem {
             text-align: center;
@@ -362,19 +388,50 @@
             line-height: 1.8;
         }
 
-        .confirmacao .data-confirmacao {
+        .data-confirmacao {
             font-family: "Cormorant Garamond", serif;
             font-size: 22px;
             margin-top: 20px;
+            line-height: 1.4;
         }
 
-        .confirmacao .localizacao {
-            margin-top: 22px;
-            padding-top: 20px;
-            border-top: 1px solid #e5e5e5;
-            font-size: 12px;
-            line-height: 1.7;
+        /* AVISO LOCALIZAÇÃO */
+
+        .aviso-localizacao {
+            margin-top: 28px;
+            padding: 18px 15px;
+
+            border: 1px solid #d7d7d7;
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff,
+                    #eeeeee,
+                    #ffffff
+                );
         }
+
+        .aviso-localizacao .pin {
+            font-size: 21px;
+            margin-bottom: 7px;
+        }
+
+        .aviso-localizacao strong {
+            display: block;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 21px;
+            margin-bottom: 5px;
+        }
+
+        .aviso-localizacao span {
+            font-family: "Montserrat", sans-serif;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        /* RODAPÉ */
 
         footer {
             text-align: center;
@@ -387,6 +444,8 @@
         footer .estrela {
             margin-bottom: 10px;
         }
+
+        /* CELULAR */
 
         @media (max-width: 600px) {
 
@@ -436,13 +495,20 @@
 
 <div class="pagina">
 
+
+    <!-- IDENTIDADE VISUAL -->
+
     <div class="logo">
+
         <img
             src="Dra.png"
             alt="Dra. Isabella Faria - Medicina Pouso Alegre"
         >
+
     </div>
 
+
+    <!-- CABEÇALHO -->
 
     <section class="topo">
 
@@ -450,11 +516,17 @@
             Medicina · Turma LIII
         </div>
 
-        <h1>Dra. Isabella</h1>
+        <h1>
+            Dra. Isabella
+        </h1>
 
-        <h2>Finalmente chegou a hora</h2>
+        <h2>
+            Finalmente chegou a hora
+        </h2>
 
-        <div class="estrela">✦</div>
+        <div class="estrela">
+            ✦
+        </div>
 
         <p class="introducao">
             Depois de tantos anos, provas, plantões e histórias para contar,
@@ -463,6 +535,8 @@
 
     </section>
 
+
+    <!-- DATA -->
 
     <section class="data">
 
@@ -477,17 +551,26 @@
     </section>
 
 
+    <!-- EVENTOS -->
+
     <section class="eventos">
 
+
         <div class="evento">
 
-            <div class="icone">🎓</div>
+            <div class="icone">
+                🎓
+            </div>
 
-            <h3>Colação de Grau</h3>
+            <h3>
+                Colação de Grau
+            </h3>
 
             <p>
-                <strong>19h</strong><br>
-                Summit Hall<br>
+                <strong>19h</strong>
+                <br>
+                Summit Hall
+                <br>
                 Pouso Alegre · MG
             </p>
 
@@ -496,17 +579,24 @@
 
         <div class="evento">
 
-            <div class="icone">🥂</div>
+            <div class="icone">
+                🥂
+            </div>
 
-            <h3>Festa Pós-Colação</h3>
+            <h3>
+                Festa Pós-Colação
+            </h3>
 
             <p>
-                <strong>A partir das 21h</strong><br>
-                Sítio Leone<br>
+                <strong>A partir das 21h</strong>
+                <br>
+                Sítio Leone
+                <br>
                 Pouso Alegre · MG
             </p>
 
         </div>
+
 
     </section>
 
@@ -517,7 +607,10 @@
     </p>
 
 
+    <!-- FORMULÁRIO -->
+
     <section class="card-formulario">
+
 
         <div
             id="cabecalho-formulario"
@@ -539,6 +632,8 @@
         </div>
 
 
+        <!-- PRAZO -->
+
         <div
             id="prazo-confirmacao"
             class="prazo-confirmacao"
@@ -555,7 +650,10 @@
         </div>
 
 
+        <!-- FORM -->
+
         <form id="formulario">
+
 
             <div class="grupo">
 
@@ -579,7 +677,9 @@
                     Você estará presente?
                 </label>
 
+
                 <div class="opcoes">
+
 
                     <div class="opcao">
 
@@ -613,12 +713,16 @@
 
                     </div>
 
+
                 </div>
 
             </div>
 
 
+            <!-- ACOMPANHANTES -->
+
             <div id="bloco-acompanhantes">
+
 
                 <div class="grupo">
 
@@ -649,6 +753,7 @@
 
                 </div>
 
+
             </div>
 
 
@@ -659,13 +764,19 @@
                 Confirmar presença
             </button>
 
+
         </form>
 
 
+        <!-- A CONFIRMAÇÃO VAI APARECER AQUI -->
+
         <div id="mensagem"></div>
+
 
     </section>
 
+
+    <!-- RODAPÉ -->
 
     <footer>
 
@@ -677,41 +788,55 @@
 
     </footer>
 
+
 </div>
 
 
 <script>
 
+
     const formulario =
         document.getElementById("formulario");
+
 
     const cabecalhoFormulario =
         document.getElementById("cabecalho-formulario");
 
+
     const prazoConfirmacao =
         document.getElementById("prazo-confirmacao");
+
 
     const blocoAcompanhantes =
         document.getElementById("bloco-acompanhantes");
 
+
     const radioSim =
         document.getElementById("presenca-sim");
+
 
     const radioNao =
         document.getElementById("presenca-nao");
 
+
     const acompanhantes =
         document.getElementById("acompanhantes");
+
 
     const nomesAcompanhantes =
         document.getElementById("nomes_acompanhantes");
 
+
     const mensagem =
         document.getElementById("mensagem");
+
 
     const botaoEnviar =
         document.getElementById("botaoEnviar");
 
+
+
+    /* MARCOU SIM */
 
     radioSim.addEventListener(
         "change",
@@ -727,6 +852,9 @@
         }
     );
 
+
+
+    /* MARCOU NÃO */
 
     radioNao.addEventListener(
         "change",
@@ -749,9 +877,13 @@
     );
 
 
+
+    /* ENVIO */
+
     formulario.addEventListener(
         "submit",
         async function (event) {
+
 
             event.preventDefault();
 
@@ -787,13 +919,17 @@
                 "https://script.google.com/macros/s/AKfycbwFqtbQKxzxnSJP4IFcMVRITkLMFLG1dmXMMOPcEN4vQsHbBOyQVgks_uYjU_lbZhYO/exec";
 
 
+
             try {
+
 
                 botaoEnviar.disabled =
                     true;
 
+
                 botaoEnviar.innerText =
                     "Enviando...";
+
 
 
                 await fetch(
@@ -811,116 +947,198 @@
                 );
 
 
+
+                /* ESCONDE O FORMULÁRIO */
+
                 formulario.style.display =
                     "none";
 
+
                 cabecalhoFormulario.style.display =
                     "none";
+
 
                 prazoConfirmacao.style.display =
                     "none";
 
 
+
+                /* SE A PESSOA CONFIRMOU */
+
                 if (presenca === "Sim") {
+
 
                     mensagem.innerHTML = `
 
+
                         <div class="confirmacao">
 
+
                             <div class="icones">
+
                                 ✦ 🥂 ✦
+
                             </div>
 
+
                             <h3>
+
                                 Presença confirmada!
+
                             </h3>
 
+
                             <p>
+
                                 Fico muito feliz que você vai comemorar comigo. 🤍
+
                             </p>
+
 
                             <div class="data-confirmacao">
 
-                                13 de novembro de 2026<br>
+                                13 de novembro de 2026
+
+                                <br>
 
                                 <strong>
+
                                     Sítio Leone · a partir das 21h
+
                                 </strong>
 
                             </div>
 
-                            <div class="localizacao">
 
-                                ✦ Em breve, vou enviar a localização certinha para você.
+                            <div class="aviso-localizacao">
+
+
+                                <div class="pin">
+
+                                    📍
+
+                                </div>
+
+
+                                <strong>
+
+                                    Sobre a localização
+
+                                </strong>
+
+
+                                <span>
+
+                                    Em breve, vou enviar a localização certinha para você. ✨
+
+                                </span>
+
 
                             </div>
 
+
                         </div>
+
 
                     `;
 
+
                 }
 
+
+
+                /* SE A PESSOA NÃO FOR */
 
                 else {
 
+
                     mensagem.innerHTML = `
+
 
                         <div class="confirmacao">
 
+
                             <div class="icones">
+
                                 ♡
+
                             </div>
 
+
                             <h3>
+
                                 Obrigada por me avisar!
+
                             </h3>
 
+
                             <p>
+
                                 Você fará falta na comemoração. 🤍
+
                             </p>
+
 
                         </div>
 
+
                     `;
+
 
                 }
 
+
             }
+
 
 
             catch (erro) {
 
+
                 mensagem.innerHTML = `
+
 
                     <div class="confirmacao">
 
+
                         <p>
+
                             Ops! Não foi possível enviar.
                             Tente novamente.
+
                         </p>
+
 
                     </div>
 
+
                 `;
 
+
             }
+
 
 
             finally {
 
+
                 botaoEnviar.disabled =
                     false;
+
 
                 botaoEnviar.innerText =
                     "Confirmar presença";
 
+
             }
+
 
         }
     );
 
+
 </script>
+
 
 </body>
 
