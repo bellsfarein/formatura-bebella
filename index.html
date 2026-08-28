@@ -18,42 +18,44 @@
 
 <h3>Confirme sua presença</h3>
 
-<form>
-
-    <label>Nome completo:</label>
+<form id="formulario">
+    <label>Nome Completo:</label>
     <br>
-    <input type="text" name="nome">
-
+    <input type="text" id="nome" required>
+    
     <br><br>
-
-    <label>Você estará presente?</label>
+    
+    <label> Você estará presente?</label>
     <br>
-
-    <input type="radio" name="presenca" value="sim">
-    <label>Sim!</label>
-
-    <input type="radio" name="presenca" value="nao">
-    <label>Infelizmente não poderei ir</label>
+    
+    <input type="radio" name="presença" value="Sim"> required>
+    <label> Sim!</label>
+    
+    <input type="radio" name="presença" value="Não">
+    <label> Infelizmente não poderei ir</label>
 
     <br><br>
 
     <label>Quantos acompanhantes você levará?</label>
     <br>
 
-    <input type="number" name="acompanhantes" min="0" value="0">
-
+    <input type="number" id="acompanhantes" min="0" value="0" required>
+    
     <br><br>
-
     <label>Nome dos acompanhantes:</label>
     <br>
 
-    <textarea name="nomes_acompanhantes"></textarea>
+    <textarea id="nomes_acompanhantes"></textarea>
 
     <br><br>
 
     <button type="submit">Confirmar presença</button>
-
 </form>
+
+<p id="mensagem"></p>
+
+<script> const formulario = document.getElementById("formulario"); formulario.addEventListener("submit", async function(event) { event.preventDefault(); const presenca = document.querySelector( 'input[name="presenca"]:checked' ).value; const dados = { nome: document.getElementById("nome").value, presenca: presenca, acompanhantes: document.getElementById("acompanhantes").value, nomes_acompanhantes: document.getElementById("nomes_acompanhantes").value }; const url = "https://script.google.com/macros/s/AKfycbwFqtbQKxzxnSJP4IFcMVRITkLMFLG1dmXMMOPcEN4vQsHbBOyQVgks_uYjU_lbZhYO/exec"; try { await fetch(url, { method: "POST", body: JSON.stringify(dados) }); document.getElementById("mensagem").innerText = "Presença confirmada! 💗"; formulario.reset(); } catch (erro) { document.getElementById("mensagem").innerText = "Ops! Não foi possível enviar. Tente novamente."; } });</script>    
+    
 
 </body>
 
