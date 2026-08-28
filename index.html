@@ -1,93 +1,790 @@
-<!DOCTYPE html> 
+```html
+<!DOCTYPE html>
 <html lang="pt-BR">
-    
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Formatura da Bebella</title>
-</head> 
-    
-<body> 
-    <h1>Dra. Isabella</h1>
-    
-    <h2>Turma LIII · Medicina</h2>
-    
-    <p>Depois de tantos anos, chegou a hora de comemorar.</p>
-    
-    <h3>Confirme sua presença</h3>
-    
-    <form id="formulario"> 
-        <label for="nome">Nome Completo:</label> 
-        <br>
-        
-        <input type="text" id="nome" required> 
-        
-        <br><br> 
-        
-        <label>Você estará presente?</label>
-        <br> 
-        
-        <input type="radio" id="presenca-sim" name="presenca" value="Sim" required> 
-        <label for="presenca-sim">Sim!</label>
-        
-        <input type="radio" id="presenca-nao" name="presenca" value="Não"> 
-        <label for="presenca-nao">Infelizmente não poderei ir</label> 
-        
-        <br><br> 
-        
-        <label for="acompanhantes">Quantos acompanhantes você levará?</label>
-        <br> 
-        
-        <input type="number" id="acompanhantes" min="0" value="0" required> 
-        
-        <br><br> 
-        
-        <label for="nomes_acompanhantes">Nome dos acompanhantes:</label>
-        <br>
-        
-        <textarea id="nomes_acompanhantes"></textarea>
-        
-        <br><br>
-        
-        <button type="submit">Confirmar presença</button> 
-    </form> 
-    
-    <p id="mensagem"></p>
-    
-    <script> 
-        const formulario = document.getElementById("formulario");
-        
-        formulario.addEventListener("submit", async function (event) { 
-            event.preventDefault(); const radioSelecionado = document.querySelector( 
-                'input[name="presenca"]:checked'
-            );
-            
-        const presenca = radioSelecionado.value; 
-            
-        const dados = { 
-            nome: document.getElementById("nome").value,
-            presenca: presenca, 
-            acompanhantes: document.getElementById("acompanhantes").value,
-            nomes_acompanhantes: document.getElementById("nomes_acompanhantes").value 
-        }; 
-        
-        const url = "https://script.google.com/macros/s/AKfycbwFqtbQKxzxnSJP4IFcMVRITkLMFLG1dmXMMOPcEN4vQsHbBOyQVgks_uYjU_lbZhYO/exec"; 
-        try { 
-            await fetch(url, {
-                method: "POST",
-                body: JSON.stringify(dados)
-            }); 
-            
-            document.getElementById("mensagem").innerText = 
-                "Presença confirmada! 💗"; 
-            
-            formulario.reset(); 
-        } catch (erro) { 
-            document.getElementById("mensagem").innerText = 
-                "Ops! Não foi possível enviar. Tente novamente.";
-        } 
-    }); 
-   </script> 
-</body> 
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Formatura da Isabella</title>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top left, #f1f1f1 0%, transparent 30%),
+                radial-gradient(circle at bottom right, #e8e8e8 0%, transparent 30%),
+                #ffffff;
+
+            color: #111;
+            font-family: "Montserrat", sans-serif;
+            min-height: 100vh;
+        }
+
+        .pagina {
+            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 30px 20px 60px;
+        }
+
+        /* ARTE DO TOPO */
+
+        .logo {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo img {
+            width: 100%;
+            max-width: 380px;
+            border-radius: 22px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* CABEÇALHO */
+
+        .topo {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .topo .mini {
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .topo h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 54px;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .topo h2 {
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 4px;
+            margin-top: 12px;
+            text-transform: uppercase;
+        }
+
+        .estrela {
+            font-size: 25px;
+            margin: 22px 0;
+        }
+
+        .introducao {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 24px;
+            font-style: italic;
+            line-height: 1.4;
+            max-width: 520px;
+            margin: auto;
+        }
+
+        /* DATA */
+
+        .data {
+            text-align: center;
+            margin: 45px 0 30px;
+        }
+
+        .data-numero {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 58px;
+            letter-spacing: 5px;
+            line-height: 1;
+        }
+
+        .data-dia {
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        /* EVENTOS */
+
+        .eventos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 35px 0;
+        }
+
+        .evento {
+            border: 1px solid #d7d7d7;
+            border-radius: 22px;
+            padding: 28px 18px;
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.95),
+                    rgba(226,226,226,0.65),
+                    rgba(255,255,255,0.95)
+                );
+
+            box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+        }
+
+        .evento .icone {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .evento h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 25px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .evento p {
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .evento strong {
+            font-weight: 600;
+        }
+
+        /* FRASE */
+
+        .frase {
+            text-align: center;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 23px;
+            font-style: italic;
+            margin: 40px auto;
+            max-width: 500px;
+            line-height: 1.5;
+        }
+
+        /* FORMULÁRIO */
+
+        .card-formulario {
+            background: rgba(255,255,255,0.92);
+            border: 1px solid #dcdcdc;
+            border-radius: 28px;
+            padding: 38px 30px;
+
+            box-shadow:
+                0 18px 60px rgba(0,0,0,0.08);
+        }
+
+        .titulo-formulario {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .titulo-formulario .brilho {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .titulo-formulario h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 34px;
+            font-weight: 600;
+        }
+
+        .titulo-formulario p {
+            font-size: 12px;
+            margin-top: 7px;
+            letter-spacing: 1px;
+        }
+
+        .grupo {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 9px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            border: 1px solid #cfcfcf;
+            background: #fafafa;
+            border-radius: 14px;
+
+            padding: 14px 15px;
+
+            font-family: "Montserrat", sans-serif;
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.25s;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #111;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+        }
+
+        /* RADIO */
+
+        .opcoes {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .opcao {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .opcao input {
+            display: none;
+        }
+
+        .opcao label {
+            cursor: pointer;
+
+            border: 1px solid #cfcfcf;
+            border-radius: 14px;
+
+            padding: 15px;
+
+            text-align: center;
+
+            font-size: 12px;
+            line-height: 1.4;
+            letter-spacing: 0;
+
+            text-transform: none;
+
+            margin: 0;
+
+            transition: 0.2s;
+        }
+
+        .opcao input:checked + label {
+            background: #111;
+            color: #fff;
+            border-color: #111;
+        }
+
+        /* ACOMPANHANTES */
+
+        #bloco-acompanhantes {
+            display: none;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        /* BOTÃO */
+
+        button {
+            width: 100%;
+            margin-top: 10px;
+
+            background: #111;
+            color: white;
+
+            border: none;
+            border-radius: 100px;
+
+            padding: 17px;
+
+            font-family: "Montserrat", sans-serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: default;
+            transform: none;
+        }
+
+        /* MENSAGEM */
+
+        #mensagem {
+            text-align: center;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 24px;
+            margin-top: 25px;
+            min-height: 30px;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            text-align: center;
+            margin-top: 45px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        footer .estrela {
+            margin-bottom: 10px;
+        }
+
+        /* CELULAR */
+
+        @media (max-width: 600px) {
+
+            .pagina {
+                padding: 20px 16px 45px;
+            }
+
+            .logo img {
+                max-width: 320px;
+            }
+
+            .topo h1 {
+                font-size: 45px;
+            }
+
+            .introducao {
+                font-size: 21px;
+            }
+
+            .data-numero {
+                font-size: 46px;
+            }
+
+            .eventos {
+                grid-template-columns: 1fr;
+            }
+
+            .card-formulario {
+                padding: 30px 20px;
+            }
+
+            .opcoes {
+                flex-direction: column;
+            }
+
+            .opcao {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="pagina">
+
+    <!-- IDENTIDADE VISUAL -->
+
+    <div class="logo">
+        <img src="Dra.png" alt="Dra. Isabella Faria - Medicina Pouso Alegre">
+    </div>
+
+
+    <!-- CABEÇALHO -->
+
+    <section class="topo">
+
+        <div class="mini">Medicina · Turma LIII</div>
+
+        <h1>Dra. Isabella</h1>
+
+        <h2>Finalmente chegou a hora</h2>
+
+        <div class="estrela">✦</div>
+
+        <p class="introducao">
+            Depois de tantos anos, provas, plantões e histórias para contar,
+            chegou a hora de comemorar.
+        </p>
+
+    </section>
+
+
+    <!-- DATA -->
+
+    <section class="data">
+
+        <div class="data-numero">
+            13 · 11 · 2026
+        </div>
+
+        <div class="data-dia">
+            sexta-feira
+        </div>
+
+    </section>
+
+
+    <!-- EVENTOS -->
+
+    <section class="eventos">
+
+        <div class="evento">
+
+            <div class="icone">🎓</div>
+
+            <h3>Colação de Grau</h3>
+
+            <p>
+                <strong>19h</strong><br>
+                Summit Hall<br>
+                Pouso Alegre · MG
+            </p>
+
+        </div>
+
+
+        <div class="evento">
+
+            <div class="icone">🥂</div>
+
+            <h3>Festa Pós-Colação</h3>
+
+            <p>
+                <strong>A partir das 21h</strong><br>
+                Sítio Leone<br>
+                Pouso Alegre · MG
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <p class="frase">
+        Depois de seis anos, acho justo comemorar à altura.
+        Espero você para brindar comigo! ✦
+    </p>
+
+
+    <!-- FORMULÁRIO -->
+
+    <section class="card-formulario">
+
+        <div class="titulo-formulario">
+
+            <div class="brilho">✦</div>
+
+            <h3>Confirme sua presença</h3>
+
+            <p>FESTA PÓS-COLAÇÃO</p>
+
+        </div>
+
+
+        <form id="formulario">
+
+            <div class="grupo">
+
+                <label for="nome">
+                    Nome completo
+                </label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Digite seu nome"
+                    required
+                >
+
+            </div>
+
+
+            <div class="grupo">
+
+                <label>
+                    Você estará presente?
+                </label>
+
+                <div class="opcoes">
+
+                    <div class="opcao">
+
+                        <input
+                            type="radio"
+                            id="presenca-sim"
+                            name="presenca"
+                            value="Sim"
+                            required
+                        >
+
+                        <label for="presenca-sim">
+                            ✦ Sim, estarei lá!
+                        </label>
+
+                    </div>
+
+
+                    <div class="opcao">
+
+                        <input
+                            type="radio"
+                            id="presenca-nao"
+                            name="presenca"
+                            value="Não"
+                        >
+
+                        <label for="presenca-nao">
+                            Infelizmente não poderei ir
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACOMPANHANTES -->
+
+            <div id="bloco-acompanhantes">
+
+                <div class="grupo">
+
+                    <label for="acompanhantes">
+                        Quantos acompanhantes você levará?
+                    </label>
+
+                    <input
+                        type="number"
+                        id="acompanhantes"
+                        min="0"
+                        value="0"
+                    >
+
+                </div>
+
+
+                <div class="grupo">
+
+                    <label for="nomes_acompanhantes">
+                        Nome dos acompanhantes
+                    </label>
+
+                    <textarea
+                        id="nomes_acompanhantes"
+                        placeholder="Ex.: João Silva, Maria Silva..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <button type="submit" id="botaoEnviar">
+                Confirmar presença
+            </button>
+
+        </form>
+
+
+        <p id="mensagem"></p>
+
+    </section>
+
+
+    <footer>
+
+        <div class="estrela">✦</div>
+
+        Dra. Isabella Faria · Medicina · Turma LIII
+
+    </footer>
+
+</div>
+
+
+<script>
+
+    const formulario =
+        document.getElementById("formulario");
+
+    const blocoAcompanhantes =
+        document.getElementById("bloco-acompanhantes");
+
+    const radioSim =
+        document.getElementById("presenca-sim");
+
+    const radioNao =
+        document.getElementById("presenca-nao");
+
+    const acompanhantes =
+        document.getElementById("acompanhantes");
+
+    const nomesAcompanhantes =
+        document.getElementById("nomes_acompanhantes");
+
+    const mensagem =
+        document.getElementById("mensagem");
+
+    const botaoEnviar =
+        document.getElementById("botaoEnviar");
+
+
+    /* MOSTRAR ACOMPANHANTES SOMENTE QUANDO MARCAR SIM */
+
+    radioSim.addEventListener("change", function () {
+
+        if (radioSim.checked) {
+            blocoAcompanhantes.style.display = "block";
+        }
+
+    });
+
+
+    radioNao.addEventListener("change", function () {
+
+        if (radioNao.checked) {
+
+            blocoAcompanhantes.style.display = "none";
+
+            acompanhantes.value = "0";
+
+            nomesAcompanhantes.value = "";
+
+        }
+
+    });
+
+
+    /* ENVIO PARA GOOGLE SHEETS */
+
+    formulario.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const radioSelecionado =
+                document.querySelector(
+                    'input[name="presenca"]:checked'
+                );
+
+
+            const presenca =
+                radioSelecionado.value;
+
+
+            const dados = {
+
+                nome:
+                    document.getElementById("nome").value,
+
+                presenca:
+                    presenca,
+
+                acompanhantes:
+                    acompanhantes.value,
+
+                nomes_acompanhantes:
+                    nomesAcompanhantes.value
+
+            };
+
+
+            const url =
+                "https://script.google.com/macros/s/AKfycbwFqtbQKxzxnSJP4IFcMVRITkLMFLG1dmXMMOPcEN4vQsHbBOyQVgks_uYjU_lbZhYO/exec";
+
+
+            try {
+
+                botaoEnviar.disabled = true;
+
+                botaoEnviar.innerText =
+                    "Enviando...";
+
+
+                await fetch(
+                    url,
+                    {
+
+                        method: "POST",
+
+                        body:
+                            JSON.stringify(dados)
+
+                    }
+                );
+
+
+                mensagem.innerText =
+                    presenca === "Sim"
+                    ? "Presença confirmada! Te espero para comemorar comigo 🥂✦"
+                    : "Obrigada por me avisar! Você fará falta 🤍";
+
+
+                formulario.reset();
+
+                blocoAcompanhantes.style.display =
+                    "none";
+
+
+            } catch (erro) {
+
+
+                mensagem.innerText =
+                    "Ops! Não foi possível enviar. Tente novamente.";
+
+
+            } finally {
+
+
+                botaoEnviar.disabled =
+                    false;
+
+                botaoEnviar.innerText =
+                    "Confirmar presença";
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
 
 </html>
+```
