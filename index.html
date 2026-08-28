@@ -11,11 +11,49 @@
 <body>
 
 <h1>Dra. Isabella</h1>
+
 <h2>Turma LIII · Medicina</h2>
 
 <p>Depois de tantos anos, chegou a hora de comemorar.</p>
 
-<button>Confirmar presença</button>
+<h3>Confirme sua presença</h3>
+
+<form>
+
+    <label>Nome completo:</label>
+    <br>
+    <input type="text" name="nome">
+
+    <br><br>
+
+    <label>Você estará presente?</label>
+    <br>
+
+    <input type="radio" name="presenca" value="sim">
+    <label>Sim!</label>
+
+    <input type="radio" name="presenca" value="nao">
+    <label>Infelizmente não poderei ir</label>
+
+    <br><br>
+
+    <label>Quantos acompanhantes você levará?</label>
+    <br>
+
+    <input type="number" name="acompanhantes" min="0" value="0">
+
+    <br><br>
+
+    <label>Nome dos acompanhantes:</label>
+    <br>
+
+    <textarea name="nomes_acompanhantes"></textarea>
+
+    <br><br>
+
+    <button type="submit">Confirmar presença</button>
+
+</form>
 
 </body>
 
