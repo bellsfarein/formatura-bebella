@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -8,9 +7,9 @@
 
     <title>Formatura da Isabella</title>
 
-    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
@@ -39,7 +38,7 @@
             padding: 30px 20px 60px;
         }
 
-        /* ARTE DO TOPO */
+        /* LOGO */
 
         .logo {
             text-align: center;
@@ -184,9 +183,7 @@
             border: 1px solid #dcdcdc;
             border-radius: 28px;
             padding: 38px 30px;
-
-            box-shadow:
-                0 18px 60px rgba(0,0,0,0.08);
+            box-shadow: 0 18px 60px rgba(0,0,0,0.08);
         }
 
         .titulo-formulario {
@@ -231,14 +228,10 @@
             border: 1px solid #cfcfcf;
             background: #fafafa;
             border-radius: 14px;
-
             padding: 14px 15px;
-
             font-family: "Montserrat", sans-serif;
             font-size: 15px;
-
             outline: none;
-
             transition: 0.25s;
         }
 
@@ -254,7 +247,7 @@
             box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
         }
 
-        /* RADIO */
+        /* OPÇÕES SIM / NÃO */
 
         .opcoes {
             display: flex;
@@ -273,22 +266,15 @@
 
         .opcao label {
             cursor: pointer;
-
             border: 1px solid #cfcfcf;
             border-radius: 14px;
-
             padding: 15px;
-
             text-align: center;
-
             font-size: 12px;
             line-height: 1.4;
             letter-spacing: 0;
-
             text-transform: none;
-
             margin: 0;
-
             transition: 0.2s;
         }
 
@@ -312,22 +298,16 @@
         button {
             width: 100%;
             margin-top: 10px;
-
             background: #111;
             color: white;
-
             border: none;
             border-radius: 100px;
-
             padding: 17px;
-
             font-family: "Montserrat", sans-serif;
             font-size: 12px;
             letter-spacing: 2px;
             text-transform: uppercase;
-
             cursor: pointer;
-
             transition: 0.25s;
         }
 
@@ -342,14 +322,40 @@
             transform: none;
         }
 
-        /* MENSAGEM */
+        /* CONFIRMAÇÃO */
 
         #mensagem {
             text-align: center;
+            min-height: 20px;
+        }
+
+        .confirmacao {
+            padding: 35px 10px 15px;
+            text-align: center;
+        }
+
+        .confirmacao .icones {
+            font-size: 36px;
+            margin-bottom: 18px;
+        }
+
+        .confirmacao h3 {
             font-family: "Cormorant Garamond", serif;
-            font-size: 24px;
-            margin-top: 25px;
-            min-height: 30px;
+            font-size: 38px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .confirmacao p {
+            font-family: "Montserrat", sans-serif;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .confirmacao .data-confirmacao {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 22px;
+            margin-top: 20px;
         }
 
         /* RODAPÉ */
@@ -387,7 +393,8 @@
             }
 
             .data-numero {
-                font-size: 46px;
+                font-size: 42px;
+                letter-spacing: 3px;
             }
 
             .eventos {
@@ -410,6 +417,7 @@
     </style>
 </head>
 
+
 <body>
 
 <div class="pagina">
@@ -417,7 +425,8 @@
     <!-- IDENTIDADE VISUAL -->
 
     <div class="logo">
-        <img src="Dra.png" alt="Dra. Isabella Faria - Medicina Pouso Alegre">
+        <img src="Dra.png"
+             alt="Dra. Isabella Faria - Medicina Pouso Alegre">
     </div>
 
 
@@ -425,7 +434,9 @@
 
     <section class="topo">
 
-        <div class="mini">Medicina · Turma LIII</div>
+        <div class="mini">
+            Medicina · Turma LIII
+        </div>
 
         <h1>Dra. Isabella</h1>
 
@@ -502,7 +513,8 @@
 
     <section class="card-formulario">
 
-        <div class="titulo-formulario">
+        <div id="cabecalho-formulario"
+             class="titulo-formulario">
 
             <div class="brilho">✦</div>
 
@@ -612,17 +624,23 @@
             </div>
 
 
-            <button type="submit" id="botaoEnviar">
+            <button
+                type="submit"
+                id="botaoEnviar">
+
                 Confirmar presença
+
             </button>
 
         </form>
 
 
-        <p id="mensagem"></p>
+        <div id="mensagem"></div>
 
     </section>
 
+
+    <!-- RODAPÉ -->
 
     <footer>
 
@@ -639,6 +657,9 @@
 
     const formulario =
         document.getElementById("formulario");
+
+    const cabecalhoFormulario =
+        document.getElementById("cabecalho-formulario");
 
     const blocoAcompanhantes =
         document.getElementById("bloco-acompanhantes");
@@ -662,16 +683,20 @@
         document.getElementById("botaoEnviar");
 
 
-    /* MOSTRAR ACOMPANHANTES SOMENTE QUANDO MARCAR SIM */
+    /* MOSTRA OS ACOMPANHANTES QUANDO MARCAR SIM */
 
     radioSim.addEventListener("change", function () {
 
         if (radioSim.checked) {
+
             blocoAcompanhantes.style.display = "block";
+
         }
 
     });
 
+
+    /* ESCONDE OS ACOMPANHANTES QUANDO MARCAR NÃO */
 
     radioNao.addEventListener("change", function () {
 
@@ -688,7 +713,7 @@
     });
 
 
-    /* ENVIO PARA GOOGLE SHEETS */
+    /* ENVIO DO FORMULÁRIO */
 
     formulario.addEventListener(
         "submit",
@@ -736,43 +761,110 @@
                     "Enviando...";
 
 
-                await fetch(
-                    url,
-                    {
+                await fetch(url, {
 
-                        method: "POST",
+                    method: "POST",
 
-                        body:
-                            JSON.stringify(dados)
+                    mode: "no-cors",
 
-                    }
-                );
+                    body: JSON.stringify(dados)
+
+                });
 
 
-                mensagem.innerText =
-                    presenca === "Sim"
-                    ? "Presença confirmada! Te espero para comemorar comigo 🥂✦"
-                    : "Obrigada por me avisar! Você fará falta 🤍";
+                /* ESCONDE O FORMULÁRIO */
+
+                formulario.style.display = "none";
+
+                cabecalhoFormulario.style.display = "none";
 
 
-                formulario.reset();
+                /* MENSAGEM PARA QUEM VAI */
 
-                blocoAcompanhantes.style.display =
-                    "none";
+                if (presenca === "Sim") {
+
+                    mensagem.innerHTML = `
+
+                        <div class="confirmacao">
+
+                            <div class="icones">
+                                ✦ 🥂 ✦
+                            </div>
+
+                            <h3>
+                                Presença confirmada!
+                            </h3>
+
+                            <p>
+                                Te espero para comemorar comigo. 🤍
+                            </p>
+
+                            <div class="data-confirmacao">
+
+                                13 de novembro de 2026<br>
+
+                                <strong>
+                                    Sítio Leone · a partir das 21h
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
 
 
-            } catch (erro) {
+                /* MENSAGEM PARA QUEM NÃO VAI */
+
+                else {
+
+                    mensagem.innerHTML = `
+
+                        <div class="confirmacao">
+
+                            <div class="icones">
+                                ♡
+                            </div>
+
+                            <h3>
+                                Obrigada por me avisar!
+                            </h3>
+
+                            <p>
+                                Você fará falta na comemoração. 🤍
+                            </p>
+
+                        </div>
+
+                    `;
+
+                }
 
 
-                mensagem.innerText =
-                    "Ops! Não foi possível enviar. Tente novamente.";
+            }
 
+            catch (erro) {
 
-            } finally {
+                mensagem.innerHTML = `
 
+                    <div class="confirmacao">
 
-                botaoEnviar.disabled =
-                    false;
+                        <p>
+                            Ops! Não foi possível enviar.
+                            Tente novamente.
+                        </p>
+
+                    </div>
+
+                `;
+
+            }
+
+            finally {
+
+                botaoEnviar.disabled = false;
 
                 botaoEnviar.innerText =
                     "Confirmar presença";
@@ -787,4 +879,3 @@
 </body>
 
 </html>
-```
