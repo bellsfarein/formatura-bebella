@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Formatura da Bebella</title>
+    <title>Formatura da Isabella</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,8 +38,6 @@
             padding: 30px 20px 60px;
         }
 
-        /* LOGO */
-
         .logo {
             text-align: center;
             margin-bottom: 25px;
@@ -52,8 +50,6 @@
             display: block;
             margin: 0 auto;
         }
-
-        /* CABEÇALHO */
 
         .topo {
             text-align: center;
@@ -96,8 +92,6 @@
             margin: auto;
         }
 
-        /* DATA */
-
         .data {
             text-align: center;
             margin: 45px 0 30px;
@@ -116,8 +110,6 @@
             text-transform: uppercase;
             margin-top: 8px;
         }
-
-        /* EVENTOS */
 
         .eventos {
             display: grid;
@@ -164,8 +156,6 @@
             font-weight: 600;
         }
 
-        /* FRASE */
-
         .frase {
             text-align: center;
             font-family: "Cormorant Garamond", serif;
@@ -175,8 +165,6 @@
             max-width: 500px;
             line-height: 1.5;
         }
-
-        /* FORMULÁRIO */
 
         .card-formulario {
             background: rgba(255,255,255,0.92);
@@ -207,8 +195,6 @@
             margin-top: 7px;
             letter-spacing: 1px;
         }
-
-        /* PRAZO DE CONFIRMAÇÃO */
 
         .prazo-confirmacao {
             text-align: center;
@@ -279,8 +265,6 @@
             box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
         }
 
-        /* OPÇÕES SIM / NÃO */
-
         .opcoes {
             display: flex;
             gap: 12px;
@@ -316,16 +300,12 @@
             border-color: #111;
         }
 
-        /* ACOMPANHANTES */
-
         #bloco-acompanhantes {
             display: none;
             margin-top: 25px;
             padding-top: 25px;
             border-top: 1px solid #e5e5e5;
         }
-
-        /* BOTÃO */
 
         button {
             width: 100%;
@@ -353,8 +333,6 @@
             cursor: default;
             transform: none;
         }
-
-        /* CONFIRMAÇÃO */
 
         #mensagem {
             text-align: center;
@@ -390,7 +368,13 @@
             margin-top: 20px;
         }
 
-        /* RODAPÉ */
+        .confirmacao .localizacao {
+            margin-top: 22px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+            font-size: 12px;
+            line-height: 1.7;
+        }
 
         footer {
             text-align: center;
@@ -403,8 +387,6 @@
         footer .estrela {
             margin-bottom: 10px;
         }
-
-        /* CELULAR */
 
         @media (max-width: 600px) {
 
@@ -454,8 +436,6 @@
 
 <div class="pagina">
 
-    <!-- IDENTIDADE VISUAL -->
-
     <div class="logo">
         <img
             src="Dra.png"
@@ -463,8 +443,6 @@
         >
     </div>
 
-
-    <!-- CABEÇALHO -->
 
     <section class="topo">
 
@@ -486,8 +464,6 @@
     </section>
 
 
-    <!-- DATA -->
-
     <section class="data">
 
         <div class="data-numero">
@@ -500,8 +476,6 @@
 
     </section>
 
-
-    <!-- EVENTOS -->
 
     <section class="eventos">
 
@@ -543,8 +517,6 @@
     </p>
 
 
-    <!-- FORMULÁRIO -->
-
     <section class="card-formulario">
 
         <div
@@ -566,8 +538,6 @@
 
         </div>
 
-
-        <!-- PRAZO -->
 
         <div
             id="prazo-confirmacao"
@@ -648,8 +618,6 @@
             </div>
 
 
-            <!-- ACOMPANHANTES -->
-
             <div id="bloco-acompanhantes">
 
                 <div class="grupo">
@@ -699,8 +667,6 @@
     </section>
 
 
-    <!-- RODAPÉ -->
-
     <footer>
 
         <div class="estrela">
@@ -747,8 +713,6 @@
         document.getElementById("botaoEnviar");
 
 
-    /* MOSTRA ACOMPANHANTES QUANDO MARCAR SIM */
-
     radioSim.addEventListener(
         "change",
         function () {
@@ -763,8 +727,6 @@
         }
     );
 
-
-    /* ESCONDE ACOMPANHANTES QUANDO MARCAR NÃO */
 
     radioNao.addEventListener(
         "change",
@@ -786,8 +748,6 @@
         }
     );
 
-
-    /* ENVIO PARA A PLANILHA */
 
     formulario.addEventListener(
         "submit",
@@ -851,8 +811,6 @@
                 );
 
 
-                /* ESCONDE FORMULÁRIO E PRAZO */
-
                 formulario.style.display =
                     "none";
 
@@ -862,8 +820,6 @@
                 prazoConfirmacao.style.display =
                     "none";
 
-
-                /* CONFIRMOU PRESENÇA */
 
                 if (presenca === "Sim") {
 
@@ -880,7 +836,7 @@
                             </h3>
 
                             <p>
-                                Te espero para comemorar comigo. 🤍
+                                Fico muito feliz que você vai comemorar comigo. 🤍
                             </p>
 
                             <div class="data-confirmacao">
@@ -893,14 +849,18 @@
 
                             </div>
 
+                            <div class="localizacao">
+
+                                ✦ Em breve, vou enviar a localização certinha para você.
+
+                            </div>
+
                         </div>
 
                     `;
 
                 }
 
-
-                /* NÃO PODERÁ IR */
 
                 else {
 
