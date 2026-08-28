@@ -1,11 +1,13 @@
+```html
 <!DOCTYPE html>
 
 <html lang="pt-BR">
 
-<head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Formatura da Isabella</title>
-
+    <title>Formatura da Isabella</title>
 </head>
 
 <body>
@@ -19,20 +21,22 @@
 <h3>Confirme sua presença</h3>
 
 <form id="formulario">
+
     <label>Nome Completo:</label>
     <br>
+
     <input type="text" id="nome" required>
-    
+
     <br><br>
-    
-    <label> Você estará presente?</label>
+
+    <label>Você estará presente?</label>
     <br>
-    
-    <input type="radio" name="presença" value="Sim" required>
-    <label> Sim!</label>
-    
-    <input type="radio" name="presença" value="Não">
-    <label> Infelizmente não poderei ir</label>
+
+    <input type="radio" name="presenca" value="Sim" required>
+    <label>Sim!</label>
+
+    <input type="radio" name="presenca" value="Não">
+    <label>Infelizmente não poderei ir</label>
 
     <br><br>
 
@@ -40,8 +44,9 @@
     <br>
 
     <input type="number" id="acompanhantes" min="0" value="0" required>
-    
+
     <br><br>
+
     <label>Nome dos acompanhantes:</label>
     <br>
 
@@ -50,9 +55,8 @@
     <br><br>
 
     <button type="submit">Confirmar presença</button>
-</form>
 
-<p id="mensagem"></p>
+</form>
 
 <p id="mensagem"></p>
 
@@ -64,9 +68,11 @@ formulario.addEventListener("submit", async function(event) {
 
     event.preventDefault();
 
-    const presenca = document.querySelector(
+    const radioSelecionado = document.querySelector(
         'input[name="presenca"]:checked'
-    ).value;
+    );
+
+    const presenca = radioSelecionado.value;
 
     const dados = {
         nome: document.getElementById("nome").value,
@@ -98,9 +104,10 @@ formulario.addEventListener("submit", async function(event) {
 
 });
 
-</script>    
-    
+</script>
 
 </body>
 
 </html>
+```
+
