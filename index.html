@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Formatura da Isabella</title>
+    <title>Formatura da Bebella</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -188,7 +188,7 @@
 
         .titulo-formulario {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
         }
 
         .titulo-formulario .brilho {
@@ -206,6 +206,38 @@
             font-size: 12px;
             margin-top: 7px;
             letter-spacing: 1px;
+        }
+
+        /* PRAZO DE CONFIRMAÇÃO */
+
+        .prazo-confirmacao {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 16px 20px;
+
+            border: 1px solid #d7d7d7;
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.95),
+                    rgba(232,232,232,0.75),
+                    rgba(255,255,255,0.95)
+                );
+        }
+
+        .prazo-confirmacao .prazo-mini {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .prazo-confirmacao .prazo-data {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 24px;
+            font-weight: 600;
         }
 
         .grupo {
@@ -425,8 +457,10 @@
     <!-- IDENTIDADE VISUAL -->
 
     <div class="logo">
-        <img src="Dra.png"
-             alt="Dra. Isabella Faria - Medicina Pouso Alegre">
+        <img
+            src="Dra.png"
+            alt="Dra. Isabella Faria - Medicina Pouso Alegre"
+        >
     </div>
 
 
@@ -513,14 +547,40 @@
 
     <section class="card-formulario">
 
-        <div id="cabecalho-formulario"
-             class="titulo-formulario">
+        <div
+            id="cabecalho-formulario"
+            class="titulo-formulario"
+        >
 
-            <div class="brilho">✦</div>
+            <div class="brilho">
+                ✦
+            </div>
 
-            <h3>Confirme sua presença</h3>
+            <h3>
+                Confirme sua presença
+            </h3>
 
-            <p>FESTA PÓS-COLAÇÃO</p>
+            <p>
+                FESTA PÓS-COLAÇÃO
+            </p>
+
+        </div>
+
+
+        <!-- PRAZO -->
+
+        <div
+            id="prazo-confirmacao"
+            class="prazo-confirmacao"
+        >
+
+            <div class="prazo-mini">
+                ✦ Atenção ao prazo ✦
+            </div>
+
+            <div class="prazo-data">
+                Confirme sua presença até 20/10/2026
+            </div>
 
         </div>
 
@@ -626,10 +686,9 @@
 
             <button
                 type="submit"
-                id="botaoEnviar">
-
+                id="botaoEnviar"
+            >
                 Confirmar presença
-
             </button>
 
         </form>
@@ -644,7 +703,9 @@
 
     <footer>
 
-        <div class="estrela">✦</div>
+        <div class="estrela">
+            ✦
+        </div>
 
         Dra. Isabella Faria · Medicina · Turma LIII
 
@@ -660,6 +721,9 @@
 
     const cabecalhoFormulario =
         document.getElementById("cabecalho-formulario");
+
+    const prazoConfirmacao =
+        document.getElementById("prazo-confirmacao");
 
     const blocoAcompanhantes =
         document.getElementById("bloco-acompanhantes");
@@ -683,37 +747,47 @@
         document.getElementById("botaoEnviar");
 
 
-    /* MOSTRA OS ACOMPANHANTES QUANDO MARCAR SIM */
+    /* MOSTRA ACOMPANHANTES QUANDO MARCAR SIM */
 
-    radioSim.addEventListener("change", function () {
+    radioSim.addEventListener(
+        "change",
+        function () {
 
-        if (radioSim.checked) {
+            if (radioSim.checked) {
 
-            blocoAcompanhantes.style.display = "block";
+                blocoAcompanhantes.style.display =
+                    "block";
 
-        }
-
-    });
-
-
-    /* ESCONDE OS ACOMPANHANTES QUANDO MARCAR NÃO */
-
-    radioNao.addEventListener("change", function () {
-
-        if (radioNao.checked) {
-
-            blocoAcompanhantes.style.display = "none";
-
-            acompanhantes.value = "0";
-
-            nomesAcompanhantes.value = "";
+            }
 
         }
+    );
 
-    });
+
+    /* ESCONDE ACOMPANHANTES QUANDO MARCAR NÃO */
+
+    radioNao.addEventListener(
+        "change",
+        function () {
+
+            if (radioNao.checked) {
+
+                blocoAcompanhantes.style.display =
+                    "none";
+
+                acompanhantes.value =
+                    "0";
+
+                nomesAcompanhantes.value =
+                    "";
+
+            }
+
+        }
+    );
 
 
-    /* ENVIO DO FORMULÁRIO */
+    /* ENVIO PARA A PLANILHA */
 
     formulario.addEventListener(
         "submit",
@@ -755,31 +829,41 @@
 
             try {
 
-                botaoEnviar.disabled = true;
+                botaoEnviar.disabled =
+                    true;
 
                 botaoEnviar.innerText =
                     "Enviando...";
 
 
-                await fetch(url, {
+                await fetch(
+                    url,
+                    {
 
-                    method: "POST",
+                        method: "POST",
 
-                    mode: "no-cors",
+                        mode: "no-cors",
 
-                    body: JSON.stringify(dados)
+                        body:
+                            JSON.stringify(dados)
 
-                });
-
-
-                /* ESCONDE O FORMULÁRIO */
-
-                formulario.style.display = "none";
-
-                cabecalhoFormulario.style.display = "none";
+                    }
+                );
 
 
-                /* MENSAGEM PARA QUEM VAI */
+                /* ESCONDE FORMULÁRIO E PRAZO */
+
+                formulario.style.display =
+                    "none";
+
+                cabecalhoFormulario.style.display =
+                    "none";
+
+                prazoConfirmacao.style.display =
+                    "none";
+
+
+                /* CONFIRMOU PRESENÇA */
 
                 if (presenca === "Sim") {
 
@@ -816,7 +900,7 @@
                 }
 
 
-                /* MENSAGEM PARA QUEM NÃO VAI */
+                /* NÃO PODERÁ IR */
 
                 else {
 
@@ -842,8 +926,8 @@
 
                 }
 
-
             }
+
 
             catch (erro) {
 
@@ -862,9 +946,11 @@
 
             }
 
+
             finally {
 
-                botaoEnviar.disabled = false;
+                botaoEnviar.disabled =
+                    false;
 
                 botaoEnviar.innerText =
                     "Confirmar presença";
